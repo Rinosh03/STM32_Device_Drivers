@@ -1102,3 +1102,59 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Sched
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-12-07 01:35:53.673
 !MESSAGE Existing sessions are:
+!SESSION 2025-12-07 09:53:12.223 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-12-07 09:53:26.528
+!MESSAGE Log4j2 initialized with config file E:\GITHUB\STM32_Device_Drivers\Rinosh_Workspace\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-12-07 09:53:38.419
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2025-12-07 09:53:54.196
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM3
+COM6
+COM4
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2025-12-07 09:53:54.198
+!MESSAGE port: COM3
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2025-12-07 09:53:54.198
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2025-12-07 09:53:54.199
+!MESSAGE port: COM4
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2025-12-07 09:53:54.199
+!MESSAGE port: COM5
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-12-07 09:57:39.068
+!MESSAGE Cannot lock E:\GITHUB\STM32_Device_Drivers\.git\index. Ensure that no other process has an open file handle on the lock file E:\GITHUB\STM32_Device_Drivers\.git\index.lock, then you may delete the lock file and retry.
+!STACK 0
+org.eclipse.jgit.errors.LockFailedException: Cannot lock E:\GITHUB\STM32_Device_Drivers\.git\index. Ensure that no other process has an open file handle on the lock file E:\GITHUB\STM32_Device_Drivers\.git\index.lock, then you may delete the lock file and retry.
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:251)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:322)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:288)
+	at org.eclipse.jgit.lib.Repository.lockDirCache(Repository.java:1292)
+	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:155)
+	at org.eclipse.egit.ui.internal.staging.StagingView$52.run(StagingView.java:3404)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-12-07 09:59:20.579
+!MESSAGE Cannot lock E:\GITHUB\STM32_Device_Drivers\.git\index. Ensure that no other process has an open file handle on the lock file E:\GITHUB\STM32_Device_Drivers\.git\index.lock, then you may delete the lock file and retry.
+!STACK 0
+org.eclipse.jgit.errors.LockFailedException: Cannot lock E:\GITHUB\STM32_Device_Drivers\.git\index. Ensure that no other process has an open file handle on the lock file E:\GITHUB\STM32_Device_Drivers\.git\index.lock, then you may delete the lock file and retry.
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:251)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:322)
+	at org.eclipse.jgit.dircache.DirCache.lock(DirCache.java:288)
+	at org.eclipse.jgit.lib.Repository.lockDirCache(Repository.java:1292)
+	at org.eclipse.jgit.api.AddCommand.call(AddCommand.java:155)
+	at org.eclipse.egit.ui.internal.staging.StagingView$52.run(StagingView.java:3404)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
