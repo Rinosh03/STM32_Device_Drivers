@@ -33,6 +33,16 @@
 #define GPIOE_BASE_ADDR						(AHB1_PERIPH_BASE_ADDR + 0x1000U)
 #define GPIOH_BASE_ADDR						(AHB1_PERIPH_BASE_ADDR + 0x1C00U)
 
+/* EXTI Base addresses Definitions */
+
+#define EXTI_BASE_ADDR						(APB2_PERIPH_BASE_ADDR + 0x3C00U)
+
+/* SYSCFG Base addresses Definitions */
+
+#define SYSCFG_BASE_ADDR					(APB2_PERIPH_BASE_ADDR + 0x3800U)
+
+/* NVIC Base addresses Definitions */
+
 
 /* RCC Registers Definition */
 
@@ -93,6 +103,29 @@ typedef struct
 	volatile uint32_t AFRH;
 }GPIO_RegDef;
 
+/* SYSCGF Registers Definition */
+
+typedef struct
+{
+	volatile uint32_t MEMRMP;
+	volatile uint32_t PMC;
+	volatile uint32_t EXTICR[4];
+	volatile uint32_t RESERVED[2];
+	volatile uint32_t CMPCR;
+}SYSCFG_RegDef;
+
+/* EXTI Register Definitions */
+
+typedef struct
+{
+	volatile uint32_t IMR;
+	volatile uint32_t EMR;
+	volatile uint32_t RTSR;
+	volatile uint32_t FTSR;
+	volatile uint32_t SWIER;
+	volatile uint32_t PR;
+}EXTI_RegDef;
+
 /* Defining RCC Macro with pointer to base address */
 
 #define RCC 								((RCC_RegDef*)RCC_BASE_ADDR)
@@ -105,6 +138,38 @@ typedef struct
 #define GPIOD								((GPIO_RegDef*)GPIOD_BASE_ADDR)
 #define GPIOE								((GPIO_RegDef*)GPIOE_BASE_ADDR)
 #define GPIOH								((GPIO_RegDef*)GPIOH_BASE_ADDR)
+
+/* Defining SYSCFG Macro with pointer to base address */
+
+#define SYSCFG								((SYSCFG_RegDef*)SYSCFG_BASE_ADDR)
+
+/* Defining EXTI Macro with pointer to base address */
+
+#define EXTI								((EXTI_RegDef*)EXTI_BASE_ADDR)
+
+/* Other Macros used in GPIO */
+#define GPIO_MODER_BITMASK					0x3
+#define GPIO_OSPEEDR_BITMASK				0x3
+#define GPIO_PUPDR_BITMASK 					0x3
+#define GPIO_AFRL_BITMASK					0xF
+#define GPIO_AFRH_BITMASK					0xF
+#define GPIO_MODER_SHIFT_BITS				0x2
+#define GPIO_OSPEEDR_SHIFT_BITS				0x2
+#define GPIO_PUPDR_SHIFT_BITS				0x2
+#define GPIO_AFRL_SHIFT_BITS				0x4
+#define GPIO_AFRH_SHIFT_BITS				0x4
+#define GPIO_AFRL_SIZE						0x7
+#define GPIO_AFRH_SIZE						0xF
+
+/* EXTI Interrupt  Numbers */
+
+#define EXTI0_IRQn							6
+#define EXTI1_IRQn							7
+#define EXTI2_IRQn							8
+#define EXTI3_IRQn							9
+#define EXTI4_IRQn							10
+#define EXTI9_5_IRQn						23
+#define EXTI0_15_IRQn						40
 
 
 #endif

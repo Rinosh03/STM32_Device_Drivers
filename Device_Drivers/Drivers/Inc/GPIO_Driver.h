@@ -45,7 +45,8 @@ typedef struct
 /* Function Declarations */
 
 void GPIO_Init(GPIO_RegDef *port, GPIO_Pinconfig *pinconfig);
-void GPIO_DeInit(GPIO_RegDef *port, GPIO_Pinconfig *pinconfig);
+void GPIO_DeInit_Pin(GPIO_RegDef *port, GPIO_Pinconfig *pinconfig);
+void GPIO_DeInit(GPIO_RegDef *port);
 
 void GPIO_TogglePin(GPIO_RegDef *port, uint8_t pin);
 void GPIO_SetPin(GPIO_RegDef *port, uint8_t pin);
