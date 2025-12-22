@@ -43,6 +43,7 @@
 
 /* NVIC Base addresses Definitions */
 
+#define NVIC_BASE_ADDR						0xE000E100U
 
 /* RCC Registers Definition */
 
@@ -125,6 +126,24 @@ typedef struct
 	volatile uint32_t SWIER;
 	volatile uint32_t PR;
 }EXTI_RegDef;
+
+/* Defining NVIC Registers Base address Macro with pointer to volatile 32 bit integer */
+
+#define NVIC_ISERx_BASE_ADDR				0xE000E100U
+#define NVIC_ICERx_BASE_ADDR				0XE000E180U
+#define NVIC_ISPRx_BASE_ADDR				0XE000E200U
+#define NVIC_ICPRx_BASE_ADDR				0XE000E280U
+#define NVIC_IABRx_BASE_ADDR				0xE000E300U
+#define NVIC_IPRx_BASE_ADDR					0xE000E400U
+
+/* NVIC Register Definition */
+
+#define NVIC_ISERx_BASE						((volatile uint32_t*)NVIC_ISERx_BASE_ADDR)
+#define NVIC_ICERx_BASE						((volatile uint32_t*)NVIC_ICERx_BASE_ADDR)
+#define NVIC_ISPRx_BASE						((volatile uint32_t*)NVIC_ISPRx_BASE_ADDR)
+#define NVIC_ICPRx_BASE						((volatile uint32_t*)NVIC_ICPRx_BASE_ADDR)
+#define NVIC_IABRx_BASE						((volatile uint32_t*)NVIC_IABRx_BASE_ADDR)
+#define NVIC_IPRx_BASE						((volatile uint8_t*)NVIC_ICPRx_BASE_ADDR)
 
 /* Defining RCC Macro with pointer to base address */
 

@@ -14,8 +14,8 @@ typedef enum
 
 
 void EXTI_Enable(uint8_t EXTI_line,EXTI_TRIGGER_T Trigger_Type);
-void EXTI_EnableEvent(uint8_t EXTI_line);
-void EXTI_SetPending(uint8_t EXTI_line);
+void EXTI_EnableEvent(uint8_t EXTI_line, EXTI_TRIGGER_T Trigger_Type);
+void EXTI_ClearPending(uint8_t EXTI_line);
 bool EXTI_isPending(uint8_t EXTI_line);
 
 

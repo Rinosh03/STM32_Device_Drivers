@@ -1,18 +1,10 @@
-03:14:07 **** Incremental Build of configuration Debug for project Device_Drivers ****
+02:59:27 **** Incremental Build of configuration Debug for project Device_Drivers ****
 make -j16 all 
-arm-none-eabi-gcc "../Drivers/Src/EXTI_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/EXTI_Driver.d" -MT"Drivers/Src/EXTI_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/EXTI_Driver.o"
-arm-none-eabi-gcc -o "Device_Drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\GITHUB\STM32_Device_Drivers\Device_Drivers\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Device_Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-C:/ST/STM32CubeIDE_2.0.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: warning: Device_Drivers.elf has a LOAD segment with RWX permissions
-Finished building target: Device_Drivers.elf
- 
 arm-none-eabi-size  Device_Drivers.elf 
-arm-none-eabi-objdump -h -S Device_Drivers.elf  > "Device_Drivers.list"
    text	   data	    bss	    dec	    hex	filename
-   1300	     16	   1568	   2884	    b44	Device_Drivers.elf
+   1832	     16	   1576	   3424	    d60	Device_Drivers.elf
 Finished building: default.size.stdout
  
-Finished building: Device_Drivers.list
- 
 
-03:14:08 Build Finished. 0 errors, 1 warnings. (took 1s.100ms)
+02:59:27 Build Finished. 0 errors, 0 warnings. (took 204ms)
 
