@@ -1,10 +1,96 @@
-02:59:27 **** Incremental Build of configuration Debug for project Device_Drivers ****
+04:40:39 **** Build of configuration Debug for project Device_Drivers ****
 make -j16 all 
-arm-none-eabi-size  Device_Drivers.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1832	     16	   1576	   3424	    d60	Device_Drivers.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Drivers/Src/EXTI_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/EXTI_Driver.d" -MT"Drivers/Src/EXTI_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/EXTI_Driver.o"
+arm-none-eabi-gcc "../Drivers/Src/GPIO_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/GPIO_Driver.d" -MT"Drivers/Src/GPIO_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/GPIO_Driver.o"
+arm-none-eabi-gcc "../Drivers/Src/NVIC_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/NVIC_Driver.d" -MT"Drivers/Src/NVIC_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/NVIC_Driver.o"
+arm-none-eabi-gcc "../Drivers/Src/RCC_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/RCC_Driver.d" -MT"Drivers/Src/RCC_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/RCC_Driver.o"
+arm-none-eabi-gcc "../Drivers/Src/SYSCFG_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/SYSCFG_Driver.d" -MT"Drivers/Src/SYSCFG_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/SYSCFG_Driver.o"
+arm-none-eabi-gcc "../Drivers/Src/USART_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F411VETx -DSTM32 -DSTM32F4 -c -I../Inc -I"E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/USART_Driver.d" -MT"Drivers/Src/USART_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/Src/USART_Driver.o"
+../Drivers/Src/RCC_Driver.c:62:6: error: conflicting types for 'RCC_EnableUSART'; have 'void(USART_Struct_T *)'
+   62 | void RCC_EnableUSART(USART_Struct_T *usartconfig)
+      |      ^~~~~~~~~~~~~~~
+In file included from ../Drivers/Src/RCC_Driver.c:1:
+E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc/RCC_Driver.h:9:6: note: previous declaration of 'RCC_EnableUSART' with type 'void(GPIO_RegDef *)'
+    9 | void RCC_EnableUSART(GPIO_RegDef *usartid);
+      |      ^~~~~~~~~~~~~~~
+../Drivers/Src/RCC_Driver.c:78:6: error: conflicting types for 'RCC_DisableUSART'; have 'void(USART_Struct_T *)'
+   78 | void RCC_DisableUSART(USART_Struct_T *usartconfig)
+      |      ^~~~~~~~~~~~~~~~
+E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc/RCC_Driver.h:10:6: note: previous declaration of 'RCC_DisableUSART' with type 'void(GPIO_RegDef *)'
+   10 | void RCC_DisableUSART(GPIO_RegDef *usartid);
+      |      ^~~~~~~~~~~~~~~~
+../Drivers/Src/USART_Driver.c: In function 'USART_Init':
+../Drivers/Src/USART_Driver.c:17:12: error: 'usartid' undeclared (first use in this function)
+   17 |         if(usartid==USART1_ID)
+      |            ^~~~~~~
+../Drivers/Src/USART_Driver.c:17:12: note: each undeclared identifier is reported only once for each function it appears in
+../Drivers/Src/USART_Driver.c:78:20: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+   78 |                 if(over8val=1)
+      |                    ^~~~~~~~
+../Drivers/Src/USART_Driver.c:80:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+   80 |                         USART1->BRR = (Mantissa<<4) | (fraction * 8 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~
+      |                                                |                    |
+      |                                                |                    float
+      |                                                uint32_t {aka long unsigned int}
+../Drivers/Src/USART_Driver.c:84:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+   84 |                         USART1->BRR = (Mantissa<<4) | (fraction * 16 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~
+      |                                                |                     |
+      |                                                |                     float
+      |                                                uint32_t {aka long unsigned int}
+../Drivers/Src/USART_Driver.c:94:33: warning: passing argument 1 of 'RCC_EnableUSART' makes pointer from integer without a cast [-Wint-conversion]
+   94 |                 RCC_EnableUSART(USART2_ID);
+      |                                 ^~~~~~~~~
+      |                                 |
+      |                                 int
+In file included from ../Drivers/Src/USART_Driver.c:9:
+E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc/RCC_Driver.h:9:35: note: expected 'GPIO_RegDef *' but argument is of type 'int'
+    9 | void RCC_EnableUSART(GPIO_RegDef *usartid);
+      |                      ~~~~~~~~~~~~~^~~~~~~
+../Drivers/Src/USART_Driver.c:150:20: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  150 |                 if(over8val=1)
+      |                    ^~~~~~~~
+../Drivers/Src/USART_Driver.c:152:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+  152 |                         USART2->BRR = (Mantissa<<4) | (fraction * 8 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~
+      |                                                |                    |
+      |                                                |                    float
+      |                                                uint32_t {aka long unsigned int}
+make: *** [Drivers/Src/subdir.mk:34: Drivers/Src/RCC_Driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Drivers/Src/USART_Driver.c:156:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+  156 |                         USART2->BRR = (Mantissa<<4) | (fraction * 16 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~
+      |                                                |                     |
+      |                                                |                     float
+      |                                                uint32_t {aka long unsigned int}
+../Drivers/Src/USART_Driver.c:165:33: warning: passing argument 1 of 'RCC_EnableUSART' makes pointer from integer without a cast [-Wint-conversion]
+  165 |                 RCC_EnableUSART(USART6_ID);
+      |                                 ^~~~~~~~~
+      |                                 |
+      |                                 int
+E:/GITHUB/STM32_Device_Drivers/Device_Drivers/Drivers/Inc/RCC_Driver.h:9:35: note: expected 'GPIO_RegDef *' but argument is of type 'int'
+    9 | void RCC_EnableUSART(GPIO_RegDef *usartid);
+      |                      ~~~~~~~~~~~~~^~~~~~~
+../Drivers/Src/USART_Driver.c:220:20: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  220 |                 if(over8val=1)
+      |                    ^~~~~~~~
+../Drivers/Src/USART_Driver.c:222:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+  222 |                         USART6->BRR = (Mantissa<<4) | (fraction * 8 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~
+      |                                                |                    |
+      |                                                |                    float
+      |                                                uint32_t {aka long unsigned int}
+../Drivers/Src/USART_Driver.c:226:53: error: invalid operands to binary | (have 'uint32_t' {aka 'long unsigned int'} and 'float')
+  226 |                         USART6->BRR = (Mantissa<<4) | (fraction * 16 +0.5f);
+      |                                       ~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~
+      |                                                |                     |
+      |                                                |                     float
+      |                                                uint32_t {aka long unsigned int}
+make: *** [Drivers/Src/subdir.mk:34: Drivers/Src/USART_Driver.o] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
 
-02:59:27 Build Finished. 0 errors, 0 warnings. (took 204ms)
+04:40:41 Build Failed. 12 errors, 5 warnings. (took 1s.474ms)
 

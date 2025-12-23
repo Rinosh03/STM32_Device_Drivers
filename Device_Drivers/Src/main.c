@@ -25,12 +25,12 @@ GPIO_Pinconfig RedLED =
 		.alternatefunc = 0
 };
 
-
 void delay()
 {
 	for(uint32_t i=0; i<1777777; i++);
 }
-int main(void)
+
+void interrupt_pushbutton()
 {
 	RCC_EnableGPIO(GPIOA);
 	RCC_EnableGPIO(GPIOD);
@@ -43,6 +43,12 @@ int main(void)
 	EXTI_Enable(0, EXTI_RISING_EDGE_TRIGGER);
 
 	NVIC_EnableIRQ(EXTI0_IRQn);
+}
+
+int main(void)
+{
+	/* uncomment to enable push button interrupt code */
+	//void interrupt_pushbutton();
 }
 
 void EXTI0_IRQHandler()

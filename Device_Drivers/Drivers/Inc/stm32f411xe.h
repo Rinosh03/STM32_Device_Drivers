@@ -45,6 +45,21 @@
 
 #define NVIC_BASE_ADDR						0xE000E100U
 
+/* Defining NVIC Registers Base address Macro with pointer to volatile 32 bit integer */
+
+#define NVIC_ISERx_BASE_ADDR				0xE000E100U
+#define NVIC_ICERx_BASE_ADDR				0XE000E180U
+#define NVIC_ISPRx_BASE_ADDR				0XE000E200U
+#define NVIC_ICPRx_BASE_ADDR				0XE000E280U
+#define NVIC_IABRx_BASE_ADDR				0xE000E300U
+#define NVIC_IPRx_BASE_ADDR					0xE000E400U
+
+/* UART Base addresses Definitions */
+
+#define USART1_BASE_ADDR					0x40011000U
+#define USART2_BASE_ADDR					0x40004400U
+#define USART6_BASE_ADDR					0x40011400U
+
 /* RCC Registers Definition */
 
 typedef struct
@@ -127,23 +142,18 @@ typedef struct
 	volatile uint32_t PR;
 }EXTI_RegDef;
 
-/* Defining NVIC Registers Base address Macro with pointer to volatile 32 bit integer */
+/* USART Register Definitions */
 
-#define NVIC_ISERx_BASE_ADDR				0xE000E100U
-#define NVIC_ICERx_BASE_ADDR				0XE000E180U
-#define NVIC_ISPRx_BASE_ADDR				0XE000E200U
-#define NVIC_ICPRx_BASE_ADDR				0XE000E280U
-#define NVIC_IABRx_BASE_ADDR				0xE000E300U
-#define NVIC_IPRx_BASE_ADDR					0xE000E400U
-
-/* NVIC Register Definition */
-
-#define NVIC_ISERx_BASE						((volatile uint32_t*)NVIC_ISERx_BASE_ADDR)
-#define NVIC_ICERx_BASE						((volatile uint32_t*)NVIC_ICERx_BASE_ADDR)
-#define NVIC_ISPRx_BASE						((volatile uint32_t*)NVIC_ISPRx_BASE_ADDR)
-#define NVIC_ICPRx_BASE						((volatile uint32_t*)NVIC_ICPRx_BASE_ADDR)
-#define NVIC_IABRx_BASE						((volatile uint32_t*)NVIC_IABRx_BASE_ADDR)
-#define NVIC_IPRx_BASE						((volatile uint8_t*)NVIC_ICPRx_BASE_ADDR)
+typedef struct
+{
+	volatile uint32_t SR;
+	volatile uint32_t DR;
+	volatile uint32_t BRR;
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t CR3;
+	volatile uint32_t GTPR;
+}USART_RegDef;
 
 /* Defining RCC Macro with pointer to base address */
 
@@ -165,6 +175,21 @@ typedef struct
 /* Defining EXTI Macro with pointer to base address */
 
 #define EXTI								((EXTI_RegDef*)EXTI_BASE_ADDR)
+
+/* NVIC Register Definition */
+
+#define NVIC_ISERx_BASE						((volatile uint32_t*)NVIC_ISERx_BASE_ADDR)
+#define NVIC_ICERx_BASE						((volatile uint32_t*)NVIC_ICERx_BASE_ADDR)
+#define NVIC_ISPRx_BASE						((volatile uint32_t*)NVIC_ISPRx_BASE_ADDR)
+#define NVIC_ICPRx_BASE						((volatile uint32_t*)NVIC_ICPRx_BASE_ADDR)
+#define NVIC_IABRx_BASE						((volatile uint32_t*)NVIC_IABRx_BASE_ADDR)
+#define NVIC_IPRx_BASE						((volatile uint8_t*)NVIC_ICPRx_BASE_ADDR)
+
+/* USART Macros definition with macros base addresses pointing towards their register structure */
+
+#define USART1								((USART_RegDef*)USART1_BASE_ADDR)
+#define USART2								((USART_RegDef*)USART2_BASE_ADDR)
+#define USART6								((USART_RegDef*)USART6_BASE_ADDR)
 
 /* Other Macros used in GPIO */
 #define GPIO_MODER_BITMASK					0x3
@@ -189,6 +214,67 @@ typedef struct
 #define EXTI4_IRQn							10
 #define EXTI9_5_IRQn						23
 #define EXTI0_15_IRQn						40
+
+/* USARTx_SR Related Macros */
+
+#define USARTx_SR_TXE						(1<<7)
+#define USARTx_SR_TC						(1<<6)
+#define USARTx_SR_RXNE						(1<<5)
+#define USARTx_SR_IDLE						(1<<4)
+#define USARTx_SR_ORE						(1<<3)
+#define USARTx_SR_NF						(1<<2)
+#define USARTx_SR_FE						(1<<1)
+#define USARTx_SR_PE						(1<<0)
+
+/* USARTx_CR1 Related Macros */
+
+#define USARTx_CR1_OVER8					(1<<15)
+#define USARTx_CR1_UE						(1<<13)
+#define USARTx_CR1_M						(1<<12)
+#define USARTx_CR1_WAKE						(1<<11)
+#define USARTx_CR1_PCE						(1<<10)
+#define USARTx_CR1_PS						(1<<9)
+#define USARTx_CR1_PEIE						(1<<8)
+#define USARTx_CR1_TXEIE					(1<<7)
+#define USARTx_CR1_TCIE						(1<<6)
+#define USARTx_CR1_RXNEIE					(1<<5)
+#define USARTx_CR1_IDLEIE					(1<<4)
+#define USARTx_CR1_TE						(1<<3)
+#define USARTx_CR1_RE						(1<<2)
+#define USARTx_CR1_RWU						(1<<1)
+#define USARTx_CR1_SBK						(1<<0)
+
+/* USARTx_CR2 Related Macros */
+
+#define USARTx_CR2_LINEN					(1<<14)
+#define USARTx_STOPBIT_1					(0b00<<12)
+#define USARTx_STOPBIT_0_5					(0b01<<12)
+#define USARTx_STOPBIT_2					(0b10<<12)
+#define USARTx_STOPBIT_1_5					(0b11<<12)
+#define USARTx_CR2_CLKEN					(1<<11)
+#define USARTx_CR2_CPOL						(1<<10)
+#define USARTx_CR2_CPHA						(1<<9)
+#define USARTx_CR2_LBCL						(1<<8)
+#define USARTx_CR2_LBDIE					(1<<6)
+#define USARTx_CR2_LBDL						(1<<5)
+
+/*USARTx_CR3 Related Macros */
+
+#define USARTx_CR3_ONEBIT					(1<<11)
+#define USARTx_CR3_CTSIE					(1<<10)
+#define USARTx_CR3_CTSE						(1<<9)
+#define USARTx_CR3_RTSE						(1<<8)
+#define USARTx_CR3_DMAT						(1<<7)
+#define USARTx_CR3_DMAR						(1<<6)
+#define USARTx_CR3_SCEN						(1<<5)
+#define USARTx_CR3_NACK						(1<<4)
+#define USARTx_CR3_HDSEL					(1<<3)
+#define USARTx_CR3_IRLP						(1<<2)
+#define USARTx_CR3_IREN						(1<<1)
+#define USARTx_CR3_EIE						(1<<0)
+
+
+
 
 
 #endif
