@@ -6,9 +6,9 @@
 
 void RCC_EnableGPIO(GPIO_RegDef *port);
 void RCC_DisableGPIO(GPIO_RegDef *port);
-void RCC_EnableUSART(GPIO_RegDef *usartid);
-void RCC_DisableUSART(GPIO_RegDef *usartid);
-
+void RCC_EnableUSART(uint8_t usartid);
+void RCC_DisableUSART(uint8_t usartid);
+void RCC_Config_HSE_SystemClock(void);
 
 
 #endif

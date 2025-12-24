@@ -26,8 +26,8 @@ void GPIO_Init(GPIO_RegDef *port, GPIO_Pinconfig *pinconfig)
 	}
 	else if(pin>GPIO_AFRL_SIZE || pin<=GPIO_AFRH_SIZE)
 	{
-		port->AFRH &= ~(GPIO_AFRH_BITMASK<<(GPIO_AFRH_SHIFT_BITS*pin));
-		port->AFRH |=((pinconfig->alternatefunc & GPIO_AFRH_BITMASK)<<(GPIO_AFRH_SHIFT_BITS*pin));
+		port->AFRH &= ~(GPIO_AFRH_BITMASK <<(GPIO_AFRH_SHIFT_BITS*(pin - GPIO_AFRL_SIZE)));
+		port->AFRH |=((pinconfig->alternatefunc & GPIO_AFRH_BITMASK)<<(GPIO_AFRH_SHIFT_BITS*(pin - GPIO_AFRL_SIZE )));
 	}
 	}
 }

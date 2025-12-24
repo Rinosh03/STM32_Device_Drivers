@@ -24,6 +24,10 @@
 
 #define RCC_BASE_ADDR						(AHB1_PERIPH_BASE_ADDR + 0x3800U)
 
+/* Floating Point Unit Base Address Definition */
+
+#define FPU_BASE_ADDR 						0xE000 ED00U
+
 /* GPIO Base Addresses Definitions */
 
 #define GPIOA_BASE_ADDR						(AHB1_PERIPH_BASE_ADDR + 0x0000U)
@@ -158,6 +162,11 @@ typedef struct
 /* Defining RCC Macro with pointer to base address */
 
 #define RCC 								((RCC_RegDef*)RCC_BASE_ADDR)
+
+/* FPU/SCB Related Macros */
+
+#define FPU_CPACR_ADDR						(*(volatile uint32_t*)(0xE000ED88U))
+
 
 /* Defining GPIO Macros with Pointer to Base Address */
 

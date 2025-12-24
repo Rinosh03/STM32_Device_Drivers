@@ -59,35 +59,43 @@ void RCC_DisableGPIO(GPIO_RegDef *port)
 }
 
 /* This function Enables the clock for USART id*/
-void RCC_EnableUSART(USART_Struct_T *usartconfig)
+void RCC_EnableUSART(uint8_t usartid)
 {
-	if(usartconfig->usartid==USART1_ID)
+	if(usartid==USART1_ID)
 	{
-		RCC->APB2RSTR |=(1<<4);
+		RCC->APB2ENR |=(1<<4);
 	}
-	else if(usartconfig->usartid==USART2_ID)
+	else if(usartid==USART2_ID)
 	{
-		RCC->APB1RSTR |=(1<<17);
+		RCC->APB1ENR |=(1<<17);
 	}
-	else if (usartconfig->usartid==USART6_ID)
+	else if (usartid==USART6_ID)
 	{
-		RCC->APB2RSTR |=(1<<5);
+		RCC->APB2ENR |=(1<<5);
 	}
 }
 /* This function disables the clock of USART id*/
-void RCC_DisableUSART(USART_Struct_T *usartconfig)
+void RCC_DisableUSART(uint8_t usartid)
 {
-	if(usartconfig->usartid==USART1_ID)
+	if(usartid==USART1_ID)
 	{
-		RCC->APB2RSTR &=~(1<<4);
+		RCC->APB2ENR &=~(1<<4);
 	}
-	else if(usartconfig->usartid==USART2_ID)
+	else if(usartid==USART2_ID)
 	{
-		RCC->APB1RSTR &=~(1<<17);
+		RCC->APB1ENR &=~(1<<17);
 	}
-	else if (usartconfig->usartid==USART6_ID)
+	else if (usartid==USART6_ID)
 	{
-		RCC->APB2RSTR &=~(1<<5);
+		RCC->APB2ENR &=~(1<<5);
 	}
+}
+void RCC_Config_HSE_SystemClock(void)
+{
+	RCC->CR |=(1<<16); // Enable HSE
+	while(!(RCC->CR & (1<<17)));
+	RCC->CFGR &=~(0b11<<0); //Clear Clock before switching
+	RCC->CFGR |=(0b01<<0); // Switch clock to HSE
+	while(!(RCC->CFGR & (0b01<<2)));
 }
 
