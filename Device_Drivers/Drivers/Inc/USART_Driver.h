@@ -2,6 +2,7 @@
 #define USART_DRIVER_H_
 
 #include "stdint.h"
+#include "stm32f411xe.h"
 
 #define USART_Periphclockfreq 8000000U
 
@@ -41,15 +42,16 @@ typedef struct
 	USART_PARITY_T parity;
 	USART_STOPBITS_T stopbits;
 	uint8_t oversampling;
+	USART_RegDef *USARTInstance;
 }USART_Struct_T;
 
 void USART_Init(USART_Struct_T *usartconfig);
-void USART_DeInit(USART_ID_T usartid);
-void USART_Transmit(USART_ID_T usartid, uint8_t *data, uint8_t length);
-void USART_Receive(USART_ID_T usartid, uint8_t *data, uint8_t length);
+void USART_DeInit(USART_Struct_T *usartconfig);
+void USART_Transmit(USART_Struct_T *usartconfig, uint8_t *data, uint8_t length);
+void USART_Receive(USART_Struct_T *usartconfig, uint8_t *data, uint8_t length);
 /* Support functions */
-void USART_Enable(USART_ID_T usartid);
-void USART_Disable(USART_ID_T usartid);
+void USART_Enable(USART_Struct_T *usartconfig);
+void USART_Disable(USART_Struct_T *usartconfig);
 void USART_ConfigureGPIO(USART_ID_T usartid);
 
 
