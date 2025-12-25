@@ -14,7 +14,7 @@ USART_Struct_T usart2config =
 		.stopbits=USART_STOPBIT_1,
 		.usartid=USART2_ID,
 		.wordlength=USART_WORDLENGTH_8B,
-		.USARTInstance=USART1
+		.USARTInstance=USART2
 };
 GPIO_Pinconfig Pushbutton =
 {
