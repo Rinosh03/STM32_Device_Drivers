@@ -1,0 +1,67 @@
+!SESSION 2026-01-01 15:27:35.713 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-01-01 15:27:57.284
+!MESSAGE Log4j2 initialized with config file E:\GITHUB\STM32_Device_Drivers\Device_Drivers\UART_HAL_Driver\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-01-01 15:28:05.663
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:28:20.671
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM3
+COM4
+COM6
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:28:20.672
+!MESSAGE port: COM3
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:28:20.672
+!MESSAGE port: COM4
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:28:20.672
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:28:20.672
+!MESSAGE port: COM5
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-01-01 15:34:33.696
+!MESSAGE Indexed 'UART_HAL_DRIVER' (36 sources, 174 headers) in 4.6 sec: 17,692 declarations; 83,523 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.24%)
+!SESSION 2026-01-01 15:35:58.673 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data E:\GITHUB\STM32_Device_Drivers\Device_Drivers\UART_HAL_Driver
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-01-01 15:36:03.525
+!MESSAGE Log4j2 initialized with config file E:\GITHUB\STM32_Device_Drivers\Device_Drivers\UART_HAL_Driver\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-01-01 15:36:13.482
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:36:26.996
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM3
+COM4
+COM6
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:36:26.997
+!MESSAGE port: COM3
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:36:26.997
+!MESSAGE port: COM4
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:36:26.997
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-01-01 15:36:26.997
+!MESSAGE port: COM5
