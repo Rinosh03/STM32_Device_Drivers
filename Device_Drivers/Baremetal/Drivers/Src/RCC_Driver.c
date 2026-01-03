@@ -102,3 +102,51 @@ void RCC_Config_HSE_SystemClock(void)
 	while(!(RCC->CFGR & (0b01<<2)));
 }
 
+void RCC_EnableSPI(SPI_RegDef *pSPIx)
+{
+	if(pSPIx==SPI1)
+	{
+		RCC->APB2ENR |=(1<<12);
+	}
+	else if(pSPIx==SPI2)
+	{
+		RCC->APB1ENR |=(1<<14);
+	}
+	else if (pSPIx==SPI3)
+	{
+		RCC->APB1ENR |=(1<<15);
+	}
+	else if (pSPIx==SPI4)
+	{
+		RCC->APB2ENR |=(1<<13);
+	}
+	else if (pSPIx==SPI5)
+	{
+		RCC->APB2ENR |=(1<<20);
+	}
+}
+
+void RCC_DisableSPI(SPI_RegDef *pSPIx)
+{
+	if(pSPIx==SPI1)
+	{
+		RCC->APB2ENR &= ~(1<<12);
+	}
+	else if(pSPIx==SPI2)
+	{
+		RCC->APB1ENR &= ~(1<<14);
+	}
+	else if (pSPIx==SPI3)
+	{
+		RCC->APB1ENR &= ~(1<<15);
+	}
+	else if (pSPIx==SPI4)
+	{
+		RCC->APB2ENR &= ~(1<<13);
+	}
+	else if (pSPIx==SPI5)
+	{
+		RCC->APB2ENR &= ~(1<<20);
+	}
+}
+

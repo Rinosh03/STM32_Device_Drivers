@@ -64,6 +64,20 @@
 #define USART2_BASE_ADDR					0x40004400U
 #define USART6_BASE_ADDR					0x40011400U
 
+/* SPI Base addresses Definitions */
+
+#define SPI1_BASE_ADDR						0x40013000U
+#define SPI2_BASE_ADDR						0x40003800U
+#define SPI3_BASE_ADDR						0x40003C00U
+#define SPI4_BASE_ADDR						0x40013400U
+#define SPI5_BASE_ADDR						0x40015000U
+
+/* I2C Base Address Definitions */
+
+#define I2C1_BASE_ADDR						0x40005400U
+#define I2C2_BASE_ADDR						0x40005800U
+#define I2C3_BASE_ADDR						0x40005C00U
+
 /* RCC Registers Definition */
 
 typedef struct
@@ -159,6 +173,36 @@ typedef struct
 	volatile uint32_t GTPR;
 }USART_RegDef;
 
+/* SPI Register Definitions */
+
+typedef struct
+{
+	volatile uint32_t CR1;
+	volatile uint32_t SR;
+	volatile uint32_t DR;
+	volatile uint32_t CRCPR;
+	volatile uint32_t RXCRCR;
+	volatile uint32_t TXCRCR;
+	volatile uint32_t I2SCFGR;
+	volatile uint32_t I2SPR;
+}SPI_RegDef;
+
+/* I2C Register Definitions */
+
+typedef struct
+{
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t OAR1;
+	volatile uint32_t OAR2;
+	volatile uint32_t DR;
+	volatile uint32_t SR1;
+	volatile uint32_t SR2;
+	volatile uint32_t CCR;
+	volatile uint32_t TRISE;
+	volatile uint32_t FLTR;
+}I2C_Regdef;
+
 /* Defining RCC Macro with pointer to base address */
 
 #define RCC 								((RCC_RegDef*)RCC_BASE_ADDR)
@@ -200,7 +244,32 @@ typedef struct
 #define USART2								((USART_RegDef*)USART2_BASE_ADDR)
 #define USART6								((USART_RegDef*)USART6_BASE_ADDR)
 
+/* SPI Macros definition with macros base addresses pointing to their register structure*/
+
+#define SPI1								((SPI_RegDef*)SPI1_BASE_ADDR)
+#define SPI2								((SPI_RegDef*)SPI1_BASE_ADDR)
+#define SPI3								((SPI_RegDef*)SPI1_BASE_ADDR)
+#define SPI4								((SPI_RegDef*)SPI1_BASE_ADDR)
+#define SPI5								((SPI_RegDef*)SPI1_BASE_ADDR)
+
+/* I2C Macros Definition */
+
+#define I2C1								((I2C_RegDef*)I2C1_BASE_ADDR)
+#define I2C2								((I2C_RegDef*)I2C2_BASE_ADDR)
+#define I2C3								((I2C_RegDef*)I2C3_BASE_ADDR)
+
+/* Clock Enable & Disable Macros for I2C */
+
+#define I2C1_PCLK_EN()						(RCC->APB1ENR |= (1<<21))
+#define I2C2_PCLK_EN()						(RCC->APB1ENR |= (1<<22))
+#define I2C3_PCLK_EN()						(RCC->APB1ENR |= (1<<23))
+
+#define I2C1_PCLK_OFF()						(RCC->APB1ENR &= ~(1<<21))
+#define I2C2_PCLK_OFF()						(RCC->APB1ENR &= ~(1<<22))
+#define I2C3_PCLK_OFF()						(RCC->APB1ENR &= ~(1<<23))
+
 /* Other Macros used in GPIO */
+
 #define GPIO_MODER_BITMASK					0x3
 #define GPIO_OSPEEDR_BITMASK				0x3
 #define GPIO_PUPDR_BITMASK 					0x3
