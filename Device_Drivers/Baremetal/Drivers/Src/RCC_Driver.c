@@ -149,4 +149,11 @@ void RCC_DisableSPI(SPI_RegDef *pSPIx)
 		RCC->APB2ENR &= ~(1<<20);
 	}
 }
+void RCC_EnableI2C(I2C_RegDef *pI2Cx)
+{
 
+}
+void RCC_DisableI2C(I2C_RegDef *pI2Cx)
+{
+
+}

@@ -87,15 +87,26 @@ typedef struct
 #define SPI_SCLK_SPEED_DIV64		5
 #define SPI_SCLK_SPEED_DIV128		6
 #define SPI_SCLK_SPEED_DIV256		7
+#define ENABLE						1
 
+/*
+ *
+ * @Flag status indicator
+ */
+#define SPI_TXE_FLAG				(1U<<1)
+#define SPI_RXNE_FLAG				(1U<<0)
+#define SPI_BSY_FLAG				(1U<<7)
 /***************************** APIs supported by SPI ************************************************/
-void SPI_PeriphCLKControl(SPI_RegDef *pSPIx, uint8_t ENorDI);
+
 void SPI_Init(SPI_Handle_T *pSPIhandle);
-void SPI_DeInit(SPI_RegDef *pSPIx);
+void SPI_DeInit(SPI_Handle_T *pSPIhandle);
 void SPI_Tx(SPI_RegDef *pSPIx, uint8_t *pTxbuffer, uint32_t len);
 void SPI_Rx(SPI_RegDef *pSPIx, uint8_t *pTxbuffer, uint32_t len);
 void SPI_IRQInterruptConfig(uint8_t IRQn, uint8_t ENorDI);
 void SPI_IRQPriorityConfig(uint8_t IRQn, uint32_t IRQPriority);
 void SPI_IRQHandling(SPI_Handle_T *pSPIhandle);
+void SPI_GPIO_Config(SPI_Handle_T *pSPId);
+
+
 
 #endif /* SPI_DRIVER_H_ */

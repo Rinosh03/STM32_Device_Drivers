@@ -178,6 +178,7 @@ typedef struct
 typedef struct
 {
 	volatile uint32_t CR1;
+	volatile uint32_t CR2;
 	volatile uint32_t SR;
 	volatile uint32_t DR;
 	volatile uint32_t CRCPR;
@@ -201,7 +202,7 @@ typedef struct
 	volatile uint32_t CCR;
 	volatile uint32_t TRISE;
 	volatile uint32_t FLTR;
-}I2C_Regdef;
+}I2C_RegDef;
 
 /* Defining RCC Macro with pointer to base address */
 
@@ -247,10 +248,10 @@ typedef struct
 /* SPI Macros definition with macros base addresses pointing to their register structure*/
 
 #define SPI1								((SPI_RegDef*)SPI1_BASE_ADDR)
-#define SPI2								((SPI_RegDef*)SPI1_BASE_ADDR)
-#define SPI3								((SPI_RegDef*)SPI1_BASE_ADDR)
-#define SPI4								((SPI_RegDef*)SPI1_BASE_ADDR)
-#define SPI5								((SPI_RegDef*)SPI1_BASE_ADDR)
+#define SPI2								((SPI_RegDef*)SPI2_BASE_ADDR)
+#define SPI3								((SPI_RegDef*)SPI3_BASE_ADDR)
+#define SPI4								((SPI_RegDef*)SPI4_BASE_ADDR)
+#define SPI5								((SPI_RegDef*)SPI5_BASE_ADDR)
 
 /* I2C Macros Definition */
 
@@ -268,6 +269,14 @@ typedef struct
 #define I2C2_PCLK_OFF()						(RCC->APB1ENR &= ~(1<<22))
 #define I2C3_PCLK_OFF()						(RCC->APB1ENR &= ~(1<<23))
 
+/**************************************** GENERIC MACROS ***********************************/\
+
+#define SET									1
+#define RESET								0
+#define FLAG_RESET							RESET
+#define FLAG_SET							SET
+
+/************************************** GPIO Macros ****************************************************************/
 /* Other Macros used in GPIO */
 
 #define GPIO_MODER_BITMASK					0x3
@@ -283,6 +292,7 @@ typedef struct
 #define GPIO_AFRL_SIZE						0x7
 #define GPIO_AFRH_SIZE						0xF
 
+/************************************ EXTI InRQn ******************************************************/
 /* EXTI Interrupt  Numbers */
 
 #define EXTI0_IRQn							6
@@ -293,6 +303,7 @@ typedef struct
 #define EXTI9_5_IRQn						23
 #define EXTI0_15_IRQn						40
 
+/***************************************** USART Macros ***************************************************/
 /* USARTx_SR Related Macros */
 
 #define USARTx_SR_TXE						(1<<7)
@@ -351,9 +362,114 @@ typedef struct
 #define USARTx_CR3_IREN						(1<<1)
 #define USARTx_CR3_EIE						(1<<0)
 
+/************************************** SPI Macros *************************************************************/
+
+/* SPI CR1 Related 	Macros*/
+
+#define SPI_CR1_BIDIMODE					(1<<15)
+#define SPI_CR1_BIDIOE						(1<<14)
+#define SPI_CR1_CRCEN						(1<<13)
+#define SPI_CR1_CRCNEXT						(1<<12)
+#define SPI_CR1_DFF							(1<<11)
+#define SPI_CR1_RXONLY						(1<<10)
+#define SPI_CR1_SSM							(1<<9)
+#define SPI_CR1_SSI							(1<<8)
+#define SPI_CR1_LSBFIRST					(1<<7)
+#define SPI_CR1_SPE							(1<<6)
+#define SPI_CR1_BR_DIV2						(Ob000<<0)
+#define SPI_CR1_BR_DIV4						(Ob001<<0)
+#define SPI_CR1_BR_DIV8						(Ob010<<0)
+#define SPI_CR1_BR_DIV16					(Ob011<<0)
+#define SPI_CR1_BR_DIV32					(Ob100<<0)
+#define SPI_CR1_BR_DIV64					(Ob101<<0)
+#define SPI_CR1_BR_DIV128					(Ob110<<0)
+#define SPI_CR1_BR_DIV256					(Ob111<<0)
+#define SPI_CR1_MSTR						(1<<2)
+#define SPI_CR1_CPOL						(1<<1)
+#define SPI_CR1_CPHA						(1<<0)
+
+/* SPI_CR2 Related Macros */
+
+#define SPI_CR2_TXEIE						(1<<7)
+#define SPI_CR2_RXEIE						(1<<6)
+#define SPI_CR2_ERRIE						(1<<5)
+#define SPI_CR2_FRF							(1<<4)
+// Bit 3 Reserved, Forced to 0 by hardware
+#define SPI_CR2_SSOE						(1<<2)
+#define SPI_CR2_TXDMAEN						(1<<1)
+#define SPI_CR2_EXDMAEN						(1<<0)
+
+/* SPI_SR Related Macros */
+// Bit 15:9 Reserved. forced to 0 by hardware
+#define SPI_SR_FRE							(1<<8)
+#define SPI_SR_BSY							(1<<7)
+#define SPI_SR_OVR							(1<<6)
+#define SPI_SR_MODF							(1<<5)
+#define SPI_SR_CRCERR						(1<<4)
+#define SPI_SR_UDR							(1<<3)
+#define SPI_SR_CHSDE						(1<<2)
 
 
+/***************************************** I2C Macros *****************************************************/
+
+/* I2C_CR_1 Related Macros*/
+
+#define I2C_CR1_SWRST						(1<<15)
+// Bit 14 reserved
+#define I2C_CR1_ALERT						(1<<13)
+#define I2C_CR1_PEC							(1<<12)
+#define I2C_CR1_POS							(1<<11)
+#define I2C_CR1_ACK							(1<<10)
+#define I2C_CR1_STOP						(1<<9)
+#define I2C_CR1_START						(1<<8)
+#define I2C_CR1_NOSTRETCH					(1<<7)
+#define I2C_CR1_ENGC						(1<<6)
+#define I2C_CR1_ENPEC						(1<<5)
+#define I2C_CR1_ENARP						(1<<4)
+#define I2C_CR1_SMBTYPE						(1<<3)
+// Bit 2 Reserved
+#define I2C_CR1_SMBUS						(1<<1)
+#define I2C_CR1_PE							(1<<0)
+
+/* I2C_CR2 Related Macros */
+
+// Bit 15:13 are reserved
+#define I2C_CR2_LAST						(1<<12)
+#define I2C_CR2_DMAEN						(1<<11)
+#define I2C_CR2_ITBUFEN						(1<<10)
+#define I2C_CR2_ITEVTEN						(1<<9)
+#define I2C_CR2_ITERREN						(1<<8)
+// Bit 7:6 Reserved
 
 
+/* I2C_SR1 Related Macros */
+
+#define I2C_SR1_SMBALERT					(1<<15)
+#define I2C_SR1_TIMEOUT						(1<<14)
+// Pin 13 Reserved
+#define I2C_SR1_PECERR						(1<<12)
+#define I2C_SR1_OVR							(1<<11)
+#define I2C_SR1_AF							(1<<10)
+#define I2C_SR1_ARLO						(1<<9)
+#define I2C_SR1_BERR						(1<<8)
+#define I2C_SR1_TXE							(1<<7)
+#define I2C_SR1_RXNE						(1<<6)
+// Bit 5 Reserved
+#define I2C_SR1_STOPF						(1<<4)
+#define I2C_SR1_ADD10						(1<<3)
+#define I2C_SR1_BTF							(1<<2)
+#define I2C_SR1_ADDR						(1<<1)
+#define I2C_SR1_SB							(1<<0)
+
+/* I2C_SR2 Related Macros */
+
+#define I2C_SR2_DUALF						(1<<7)
+#define I2C_SR2_SMBHOST						(1<<6)
+#define I2C_SR2_SMBDEFAULT					(1<<5)
+#define I2C_SR2_GENCALL						(1<<4)
+// Bit 3 Reserved
+#define I2C_SR2_TRA							(1<<2)
+#define I2C_SR2_BUSY						(1<<1)
+#define I2C_SR2_MSL							(1<<0)
 #endif
 
