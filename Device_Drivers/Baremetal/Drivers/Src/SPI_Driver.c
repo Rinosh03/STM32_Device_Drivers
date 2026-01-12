@@ -50,6 +50,7 @@ void SPI_Init(SPI_Handle_T *pSPIhandle)
 	else
 	{
 	    pSPIhandle->pSPIx->CR1 &= ~(1U << 9); // SSM = 0
+	    pSPIhandle->pSPIx->CR2 |= (1U << 2 ); // SSOE=1
 	}
 	// Initiate Device Mode
 	if(pSPIhandle->SPIConfig.DeviceMode == SPI_DEVICE_MODE_MASTER)

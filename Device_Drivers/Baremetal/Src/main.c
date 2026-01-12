@@ -118,6 +118,7 @@ int main(void) {
 	SPI2_Init();
 	SPI_GPIO_Config(&SPI2handle);
 	SPI_Tx(SPI2, (uint8_t*) user_data, strlen(user_data));
+	SPI_DeInit(&SPI2handle);
 	while (1)
 		;
 	return 0;
