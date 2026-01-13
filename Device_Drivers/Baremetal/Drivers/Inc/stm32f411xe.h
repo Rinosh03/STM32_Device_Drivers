@@ -1,6 +1,8 @@
 #ifndef STM32F411xE_H
 #define STM32F411xE_H
 #include "stdint.h"
+#include "stddef.h"
+#define __weak __attribute__((weak))
 /* CPU Macros addresses definition */
 
 #define FLASH_MEMORY_BASE_ADDR				0x08000000U
@@ -49,14 +51,24 @@
 
 #define NVIC_BASE_ADDR						0xE000E100U
 
-/* Defining NVIC Registers Base address Macro with pointer to volatile 32 bit integer */
+/********************************** NVIC Registers Definitions *****************************************/
 
-#define NVIC_ISERx_BASE_ADDR				0xE000E100U
-#define NVIC_ICERx_BASE_ADDR				0XE000E180U
-#define NVIC_ISPRx_BASE_ADDR				0XE000E200U
-#define NVIC_ICPRx_BASE_ADDR				0XE000E280U
-#define NVIC_IABRx_BASE_ADDR				0xE000E300U
-#define NVIC_IPRx_BASE_ADDR					0xE000E400U
+// NVIC ISER
+#define NVIC_ISER0					((volatile uint32_t*) 0xE000E100)
+#define NVIC_ISER1					((volatile uint32_t*) 0xE000E104)
+#define NVIC_ISER2					((volatile uint32_t*) 0xE000E108)
+#define NVIC_ISER3					((volatile uint32_t*) 0xE000E10C)
+
+// NVIC ICER
+
+#define NVIC_ICER0					((volatile uint32_t*) 0XE000E180)
+#define NVIC_ICER1					((volatile uint32_t*) 0XE000E184)
+#define NVIC_ICER2					((volatile uint32_t*) 0XE000E188)
+#define NVIC_ICER3					((volatile uint32_t*) 0XE000E18C)
+
+// NVIC IPR
+#define NVIC_PR_BASE_ADDR			((volatile uint32_t*) 0XE000E200)
+#define NO_PR_BITS_IMPLEMENTED		4 // Lower nibble not part of user section
 
 /* UART Base addresses Definitions */
 
@@ -230,14 +242,6 @@ typedef struct
 
 #define EXTI								((EXTI_RegDef*)EXTI_BASE_ADDR)
 
-/* NVIC Register Definition */
-
-#define NVIC_ISERx_BASE						((volatile uint32_t*)NVIC_ISERx_BASE_ADDR)
-#define NVIC_ICERx_BASE						((volatile uint32_t*)NVIC_ICERx_BASE_ADDR)
-#define NVIC_ISPRx_BASE						((volatile uint32_t*)NVIC_ISPRx_BASE_ADDR)
-#define NVIC_ICPRx_BASE						((volatile uint32_t*)NVIC_ICPRx_BASE_ADDR)
-#define NVIC_IABRx_BASE						((volatile uint32_t*)NVIC_IABRx_BASE_ADDR)
-#define NVIC_IPRx_BASE						((volatile uint8_t*)NVIC_ICPRx_BASE_ADDR)
 
 /* USART Macros definition with macros base addresses pointing towards their register structure */
 
@@ -292,7 +296,7 @@ typedef struct
 #define GPIO_AFRL_SIZE						0x7
 #define GPIO_AFRH_SIZE						0xF
 
-/************************************ EXTI InRQn ******************************************************/
+/************************************ EXTI IRQn ******************************************************/
 /* EXTI Interrupt  Numbers */
 
 #define EXTI0_IRQn							6
@@ -302,6 +306,14 @@ typedef struct
 #define EXTI4_IRQn							10
 #define EXTI9_5_IRQn						23
 #define EXTI0_15_IRQn						40
+
+/**************************************** SPI IRQn *******************************************************/
+#define SPI1_IRQn							35
+#define SPI2_IRQn							36
+#define SPI3_IRQn							51
+#define SPI4_IRQn							84
+#define SPI5_IRQn							85
+
 
 /***************************************** USART Macros ***************************************************/
 /* USARTx_SR Related Macros */
@@ -408,6 +420,8 @@ typedef struct
 #define SPI_SR_CRCERR						(1<<4)
 #define SPI_SR_UDR							(1<<3)
 #define SPI_SR_CHSDE						(1<<2)
+#define SPI_SR_TXE							(1<<1)
+#define SPI_SR_RXNE							(1<<0)
 
 
 /***************************************** I2C Macros *****************************************************/

@@ -9,7 +9,6 @@
 #include "RCC_Driver.h"
 #include "SYSCFG_Driver.h"
 #include "EXTI_Driver.h"
-#include "NVIC_Driver.h"
 #include "USART_Driver.h"
 #include "SPI_Driver.h"
 #include <string.h>
