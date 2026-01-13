@@ -35,8 +35,8 @@ GPIO_Pinconfig Pushbutton =
 			.pin = 0,
 			.otype = GPIO_OTYPE_PP,
 			.mode = GPIO_MODE_INPUT,
-			.ospeed = GPIO_OSPEED_LOW,
-			.pupdr = GPIO_NOPUPDR,
+			.ospeed = GPIO_OSPEED_HIGH,
+			.pupdr = GPIO_PULL_UP,
 			.alternatefunc = 0,
 };
 
@@ -50,8 +50,8 @@ void SPI2_Init() {
 	SPI2handle.SPIConfig.DeviceMode = SPI_DEVICE_MODE_MASTER;
 	SPI2handle.SPIConfig.DFF = SPI_DFF_8_BIT;
 	SPI2handle.SPIConfig.Speed = SPI_SCLK_SPEED_DIV128;
-	SPI2handle.SPIConfig.CPOL = SPI_CPOL_0;
-	SPI2handle.SPIConfig.CPHA = SPI_CPHA_0;
+	SPI2handle.SPIConfig.CPOL = SPI_CPOL_1;
+	SPI2handle.SPIConfig.CPHA = SPI_CPHA_1;
 	SPI2handle.SPIConfig.SSM = SPI_SSM_HW;
 
 	SPI_Init(&SPI2handle);

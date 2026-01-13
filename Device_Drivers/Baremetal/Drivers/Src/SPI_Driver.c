@@ -108,15 +108,30 @@ void SPI_Tx(SPI_RegDef *pSPIx, uint8_t *pTxbuffer, uint32_t len)
 			len--;
 		}
 	}
-	while(pSPIx->SR & SPI_BSY_FLAG);
 
 }
 
 /* This function is used for Receiving the data */
 
-void SPI_Rx(SPI_RegDef *pSPIx, uint8_t *pTxbuffer, uint32_t len)
+void SPI_Rx(SPI_RegDef *pSPIx, uint8_t *pRxbuffer, uint32_t len)
 {
-
+	while(len>0)
+	{
+		while(SPI_GetFlagStatus(pSPIx, SPI_RXNE_FLAG) == FLAG_RESET);
+		//Set the DFF
+			if(pSPIx->CR1 & SPI_CR1_DFF)
+			{
+				*((uint16_t*) pRxbuffer) = pSPIx->DR;
+				len-=2;
+				(uint16_t*) pRxbuffer++;
+			}
+			else
+			{
+				*pRxbuffer = pSPIx->DR;
+				len--;
+				pRxbuffer++;
+			}
+		}
 }
 
 /* This function is used for configuring the interrupt */
@@ -148,7 +163,7 @@ void SPI_GPIO_Config(SPI_Handle_T *pSPId)
 			.mode = GPIO_MODE_ALT,
 			.otype = GPIO_OTYPE_PP,
 			.ospeed = GPIO_OSPEED_FAST,
-			.pupdr = GPIO_NOPUPDR,
+			.pupdr = GPIO_PULL_UP,
 			.alternatefunc = 0
 	};
 	if(pSPId->pSPIx == SPI1 ) // MOSI-> PA7 MISO-> PA6 NSS-> PA4 SCLK->PA5; AF->05
